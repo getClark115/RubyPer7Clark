@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class HealthColleect : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+     void OnTriggerEnter2D(Collider2D other)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        RudyControls controller = other.GetComponent<RudyControls>();
+        if (controller != null)
+        {
+            if(controller.currentHealth < controller.maxHealth)
+            {
+                controller.ChangeHealth(1);
+                Destroy(gameObject);
+            } 
+            
+        }
     }
 }

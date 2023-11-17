@@ -6,8 +6,8 @@ public class RudyControls : MonoBehaviour
 {
     public float speed = 5.3f;
     public int maxHealth = 55;
-        int currentHealth;
-
+    public int Health { get { return currentHealth; } }
+    public int currentHealth;
 
     Rigidbody2D rigidbody2d;
     float horizontal;
@@ -35,7 +35,7 @@ public class RudyControls : MonoBehaviour
         position.y = position.y + speed * vertical * Time.deltaTime;
         rigidbody2d.MovePosition(position);
     }
-    void ChangeHealth(int amount)
+    public void ChangeHealth(int amount)
     {
         currentHealth = Mathf.Clamp(currentHealth + amount, 0,maxHealth);
         Debug.Log(currentHealth + "/" + maxHealth);
